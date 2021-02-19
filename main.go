@@ -8,6 +8,6 @@ import (
 
 func main() {
 	r := bootstrap.Start()
-	fmt.Println(config.App.Name + "++++++++++=++++++++++++++++++++++++++")
+	fmt.Println(config.App.Name)
 	r.Run()
 }
