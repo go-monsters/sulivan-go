@@ -13,6 +13,9 @@ func Start() {
 	config.LoadConfig()
 	//create new gin
 	Router = gin.Default()
+	//register views
+	Router.LoadHTMLGlob("resources/views/*.tmpl")
+	//Router.LoadHTMLGlob("resources/views/*/*.tmpl")
 	//register routes
 	//if production go run in production
 	//if debug -> turn on debug
