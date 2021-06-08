@@ -3,6 +3,8 @@ package bootstrap
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-monsters/sulivan/config"
+	"github.com/go-monsters/sulivan/database"
+	"github.com/go-monsters/sulivan/database/migrations"
 	"github.com/go-monsters/sulivan/routes"
 	"io/ioutil"
 	"log"
@@ -13,17 +15,21 @@ var Router *gin.Engine
 func Start() {
 	//load config from env file
 	config.LoadConfig()
+	//init database connections
+	database.InitDB()
+	//run migrations
+	migrations.Migrate()
 	//create new gin
 	Router = gin.Default()
 	//register routes
-	//if production go run in production
-	//if debug -> turn on debug
 	registerAssets()
 	routes.Register(Router)
 	//logger
 	Router.Use(gin.Logger())
 	Router.Use(gin.Recovery())
 	// 		log on file or any other platforms. log daily
+	//if production go run in production
+	//if debug -> turn on debug
 	//middleware
 	// exception handler
 	//response handler

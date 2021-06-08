@@ -7,6 +7,8 @@ import (
 )
 
 var App = AppConfig{}
+var DBConnectionName = DBConnectionNameConfig{}
+var DBSqlite = DBSqliteConfig{}
 
 func LoadConfig(){
 
@@ -16,4 +18,6 @@ func LoadConfig(){
 	}
 
 	env.Parse(&App)
+	env.Parse(&DBConnectionName)
+	env.Parse(&DBSqlite)
 }

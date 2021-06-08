@@ -30,6 +30,7 @@ $ npm run dev
 
 to start it with fresh:
 ```sh
+$ go get github.com/pilu/fresh
 $ fresh -c fresh.conf 
 ```
 
