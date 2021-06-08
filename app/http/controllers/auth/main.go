@@ -9,3 +9,8 @@ func Login(c *gin.Context) {
 	view := views.NewView("guest", "auth/login")
 	view.Render(c.Writer, nil)
 }
+
+func Register(c *gin.Context) {
+	view := views.NewView("guest", "auth/register")
+	view.Render(c.Writer, nil)
+}

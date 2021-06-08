@@ -9,4 +9,5 @@ import (
 func WebRoute(router *gin.Engine) {
 	router.GET("/", controllers.Welcome)
 	router.GET("/login", auth.Login)
+	router.GET("/register", auth.Register)
 }

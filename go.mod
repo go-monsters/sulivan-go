@@ -1,10 +1,9 @@
 module github.com/go-monsters/sulivan
 
-go 1.15
+go 1.16
 
 require (
 	github.com/caarlos0/env/v6 v6.5.0
-	github.com/gin-contrib/multitemplate v0.0.0-20210428235909-8a2f6dd269a0 // indirect
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-playground/validator/v10 v10.4.1 // indirect
 	github.com/golang/protobuf v1.4.3 // indirect

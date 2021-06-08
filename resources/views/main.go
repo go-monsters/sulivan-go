@@ -7,6 +7,7 @@ import (
 )
 
 var LayoutDir string = "resources/views/layouts"
+var PartialDir string = "resources/views/partials"
 var prefix string = ".tmpl"
 var baseDir string = "resources/views/"
 var bootstrap *template.Template
@@ -18,6 +19,7 @@ func NewView(layout string, files ...string) *View {
 	}
 
 	files = append(layoutFiles(), files...)
+	files = append(partialFiles(), files...)
 	t, err := template.ParseFiles(files...)
 	if err != nil {
 		panic(err)
@@ -34,12 +36,29 @@ type View struct {
 	Layout   string
 }
 
+type ViewData struct {
+	Auth interface{}
+	Data interface{}
+}
+
 func (v *View) Render(w http.ResponseWriter, data interface{}) error {
-	return v.Template.ExecuteTemplate(w, v.Layout, data)
+	vd := ViewData{
+		Auth: nil,
+		Data:    data,
+	}
+	return v.Template.ExecuteTemplate(w, v.Layout, vd)
 }
 
 func layoutFiles() []string {
 	files, err := filepath.Glob(LayoutDir + "/*" + prefix)
+	if err != nil {
+		panic(err)
+	}
+	return files
+}
+
+func partialFiles() []string {
+	files, err := filepath.Glob(PartialDir + "/*" + prefix)
 	if err != nil {
 		panic(err)
 	}

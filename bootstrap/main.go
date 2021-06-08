@@ -15,15 +15,14 @@ func Start() {
 	config.LoadConfig()
 	//create new gin
 	Router = gin.Default()
-	Router.Use(gin.Logger())
-	Router.Use(gin.Recovery())
-	registerAssets()
-
 	//register routes
 	//if production go run in production
 	//if debug -> turn on debug
+	registerAssets()
 	routes.Register(Router)
 	//logger
+	Router.Use(gin.Logger())
+	Router.Use(gin.Recovery())
 	// 		log on file or any other platforms. log daily
 	//middleware
 	// exception handler
@@ -48,6 +47,8 @@ func registerAssets() {
 	}
 
 	for _, f := range files {
-		Router.Static("/"+f.Name(), "./public/"+f.Name())
+		if f.IsDir() {
+			Router.Static("/"+f.Name(), "./public/"+f.Name())
+		}
 	}
 }
