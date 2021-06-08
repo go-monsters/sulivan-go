@@ -6,9 +6,21 @@
             </a>
         </div>
 
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-            <form method="POST" action="/login">
+        <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <form method="POST" action="/register">
+
                 <div>
+                    <label class="block font-medium text-sm text-gray-700" for="name">
+                        Name
+                    </label>
+
+
+                    <input id="name"
+                           class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                           type="text" name="name" required autofocus/>
+                </div>
+
+                <div class="mt-4">
                     <label class="block font-medium text-sm text-gray-700" for="email">
                         Email
                     </label>
@@ -28,24 +40,29 @@
                            class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                            type="password"
                            name="password"
-                           required autocomplete="current-password"/>
+                           required autocomplete="new-password"/>
                 </div>
 
-                <!-- Remember Me -->
-                <div class="block mt-4">
-                    <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                <div class="mt-4">
+                    <label class="block font-medium text-sm text-gray-700" for="password_confirmation">
+                        Confirm Password
                     </label>
+
+                    <input id="password_confirmation"
+                           class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                           type="password"
+                           name="password_confirmation"
+                           required/>
                 </div>
+
 
                 <div class="flex items-center justify-end mt-4">
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="/">
-                        Forgot your password?
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="/login">
+                        Already registered?
                     </a>
 
                     <button type="submit" class="ml-3 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
-                        Log in
+                        Register
                     </button>
                 </div>
             </form>
